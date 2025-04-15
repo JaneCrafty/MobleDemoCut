@@ -1,0 +1,4 @@
+BuildIosApp:
+  extends:
+    - .setup-for-ios-build
+    - .rules-ios-build-and-tests

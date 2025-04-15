@@ -1,0 +1,97 @@
+.setup-for-android-build:
+  stage: AppBuild
+  allow_failure: false
+  script:
+    - echo "platform" = $platform
+#    - if [[ $appBranch =~ [(R[C]|^RC*)] ]]; then buildBranch=$appBranch; else buildBranch=develop; fi && echo $buildBranch
+    - if [[ -z $appBranch ]]; then buildBranch=master; else buildBranch=$appBranch; fi && echo $buildBranch
+    - date
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.example.com/mobile/android/example.git android
+    - cd android
+    # good place to insert build caching logic
+    - echo branch name is ${buildBranch}
+    - echo "building app"
+    - git stash
+    - git checkout ${buildBranch}
+    - cp -rf ../AndroidMainConfig/remote_config.json app/src/devtools/assets/remote_config.json;
+    - cp -rf ../AndroidFeatureFlagCarolConfig/BrokerBetaFeatureToggle.kt app/src/share/java/com/example/broker/common/toggle/BrokerBetaFeatureToggle.kt;
+    - GRADLE_PROPERTIES_FILE=gradle.properties
+    - function getGradleProperty { echo `cat $GRADLE_PROPERTIES_FILE | grep $1 | cut -d'=' -f2`; }
+    - VERSION_NUMBER=$(getGradleProperty VERSION_NAME)
+    - VERSION_CODE=$(getGradleProperty VERSION_CODE)
+    - echo version number is $VERSION_NUMBER
+    - echo version code is $VERSION_CODE
+    - echo build number is $callerJobId
+    - DBRANCHNAME=${branchName:-${stackName}}
+    - echo "stageName=${DBRANCHNAME}"
+    - if [[ $appName == "vip_broker_beta" ]]; then
+      ./gradlew -Dorg.gradle.java.home=${Java17} assembleVipBrokerBetaRelease -x lintVitalVipBrokerBetaRelease -PdockerName=${DBRANCHNAME};
+      else
+      ./gradlew -Dorg.gradle.java.home=${Java17} assembleBrokerBetaRelease -x lintVitalBrokerBetaRelease -PdockerName=${DBRANCHNAME};
+    - fi
+    - cd ..
+    - echo "VERSION_NUMBER=$VERSION_NUMBER" >> versionnumber.env
+    - echo "VERSION_CODE=$VERSION_CODE" >> codenumber.env
+    - echo "CALLER_JOB_ID=$callerJobId" >> buildnumber.env
+    - echo "APP_BRANCH=$appBranch" >> appbranch.env
+  artifacts:
+    reports:
+      dotenv:
+        - versionnumber.env
+        - codenumber.env
+        - buildnumber.env
+        - appbranch.env
+    name: "app-brokerBeta-release"
+    paths:
+      - android/app/build/outputs/apk/brokerBeta/release/
+      - android/app/build/outputs/apk/vipBrokerBeta/release/
+    expire_in: 12 hour
+  retry: 1
+  tags:
+    - qa-shell-nl-qaq
+
+.setup-for-ios-build:
+  stage: AppBuild
+  allow_failure: false
+  script:
+    - export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+    - export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+    - ruby -v
+    - if [[ $appBranch =~ [(R[C]|^RC*)] ]]; then buildBranch=$appBranch; else buildBranch=develop; fi && echo $buildBranch
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.example.com/mobile/ios/example.git ios
+    - cd ios
+    - echo branch name is ${buildBranch}
+    - git checkout ${buildBranch}
+    - VERSION_NUMBER=$(xcodebuild -showBuildSettings -workspace example.xcworkspace -scheme example | grep "^\s*MARKETING_VERSION" | awk -F' = ' '{print $2}')
+    - VERSION_CODE=$(xcodebuild -showBuildSettings -workspace example.xcworkspace -scheme example | grep "^\s*CURRENT_PROJECT_VERSION" | awk -F' = ' '{print $2}')
+    - echo version number is $VERSION_NUMBER
+    - echo version code is $VERSION_CODE
+    - echo build number is $callerJobId
+    - git submodule init
+    - git submodule update
+    - export LANG=en_US.UTF-8
+    - pod --version
+    - pod repo update --verbose
+    - pod install
+    - pwd
+    - cp -rf ../remote_config_ios.json example/Configurations/RemoteConfig/remote_config.json
+    - set -o pipefail && xcodebuild -workspace example.xcworkspace -scheme example -configuration Autotest -sdk iphonesimulator  SYMROOT=${PWD}/app clean build EXCLUDED_ARCHS=arm64  | xcpretty
+    - ls -la ${PWD}/app
+    - ls -la ${PWD}/app/Autotest-iphonesimulator/example-Beta.app
+    - echo "VERSION_NUMBER=$VERSION_NUMBER" >> versionnumber.env
+    - echo "VERSION_CODE=$VERSION_CODE" >> codenumber.env
+    - echo "CALLER_JOB_ID=$callerJobId" >> buildnumber.env
+  artifacts:
+    reports:
+      dotenv:
+        - versionnumber.env
+        - codenumber.env
+        - buildnumber.env
+    name: "App ios"
+    untracked: true
+    paths:
+      - ios/app/Autotest-iphonesimulator/example-Beta.app
+    expire_in: 1 day
+  retry: 1
+  tags:
+    - qa-shell-build-ios-macmini0

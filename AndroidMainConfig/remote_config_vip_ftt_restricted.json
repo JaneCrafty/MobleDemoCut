@@ -1,0 +1,221 @@
+{
+  "version": 0,
+  "config": [
+    {
+      "key": "tournaments_enabled",
+      "value": true
+    },
+    {
+      "key": "api_host_config",
+      "value": "{\"host\":\"example.com\",\"certificate\":\"\"}"
+    },
+    {
+      "key": "web_rotator_host",
+      "value": "example-r.com"
+    },
+    {
+      "key": "education_host",
+      "value": "tradingstudy.net"
+    },
+    {
+      "key": "help_center_config",
+      "value": "{\"en\":\"https://example2.zendesk.com/hc/en-us\",\"id\":\"https://example2.zendesk.com/hc/id\",\"es\":\"https://example2.zendesk.com/hc/es\",\"th\":\"https://example2.zendesk.com/hc/en-us\",\"vn\":\"https://example2.zendesk.com/hc/vi\",\"cn\":\"https://example2.zendesk.com/hc/en-us\",\"tr\":\"https://example2.zendesk.com/hc/tr\",\"in\":\"https://example2.zendesk.com/hc/hi-in\",\"ua\":\"https://example2.zendesk.com/hc/uk\",\"kz\":\"https://example2.zendesk.com/hc/en-us\",\"br\":\"https://example2.zendesk.com/hc/pt-br\",\"bn\":\"https://example2.zendesk.com/hc/en-us\", \"ru\":\"https://example2.zendesk.com/hc/ru-ru\"}"
+    },
+    {
+      "key": "verification_support_email",
+      "value": "verification@example.com"
+    },
+    {
+      "key": "two_factor_auth_disabled",
+      "value": false
+    },
+    {
+      "key": "whats_new_enabled",
+      "value": true
+    },
+    {
+      "key": "available_social_networks",
+      "value": ""
+    },
+    {
+      "key": "organic_default_trading_mechanic",
+      "value": "cfd"
+    },
+    {
+      "key": "non_organic_default_trading_mechanic",
+      "value": "std"
+    },
+    {
+      "key": "blitz_enabled",
+      "value": true
+    },
+    {
+      "key": "cfd_enabled",
+      "value": true
+    },
+    {
+      "key": "real_cfd_enabled",
+      "value": false
+    },
+    {
+      "key": "chat_enabled",
+      "value": true
+    },
+    {
+      "key": "chatbot_enabled",
+      "value": false
+    },
+    {
+      "key": "core_reload_delay_ms",
+      "value": 5000
+    },
+    {
+      "key": "ab_platform_enabled",
+      "value": false
+    },
+    {
+      "key": "highvip_enabled",
+      "value": true
+    },
+    {
+      "key": "wtc_23_enabled",
+      "value": false
+    },
+    {
+      "key": "wtc_23_landing_path",
+      "value": "/promo/wtc"
+    },
+    {
+      "key": "wtc_23_prize_landing_path",
+      "value": "/promo/wtc_raffle"
+    },
+    {
+      "key": "statuses_enabled_for_free_status",
+      "value": true
+    },
+    {
+      "key": "stop_losing_funds_landing_path",
+      "value": ""
+    },
+    {
+      "key": "telegram_chat_config",
+      "value": ""
+    },
+    {
+      "key": "telegram_channel_config",
+      "value": ""
+    },
+    {
+      "key": "clickstream_events_enabled",
+      "value": false
+    },
+    {
+      "key": "prestige_club_landing_path",
+      "value": "/promo/l79"
+    },
+    {
+      "key": "sci_chart_license_key",
+      "value": "7J8VIvWcCBLdCxT+FHkFFQI9PeHvQuNFe++HBAxRIvU/S3HdVbpJmz8x+2g4YYsfLANaZ4LxFTFouM5dLLFNRMK3oOJPm3+EicRxlTHrtd/z6fOdQEl7pUMYWW5m9H1DExwcp3ZeInO0VHA5mR3cQrkFT/qIns9df9aL52aSVpQT7HlQEWNg3fYJvraG4wayNlmKVaelSRL/aZbGcY8GmgwMIIYyipLrxtduW3G2kvlze+C0QvmrYPyNd8l89rZAWN9yf3+EUj5ASN1wc6LzlZcvOZGCmzhuw15+gtV1e3gTpMJMGywM6xvEztHizehfl2WCr5OTVqoWISDviPpX/4cT8U3Iro5Mphwen/oi41RJIYOC4/lkLEc7nkQohj68YAbkghAZBgT+149G5YzqoxSoy+TUPTf3WFcUJvBOQ9NL+dHkwWnibq8vQoUcRkVqU14SyrIalaytxL391gm0JEDCuRzBJ30Hg+OhONJ2eIUuOQ=="
+    },
+    {
+      "key": "clarity_project_id",
+      "value": ""
+    },
+    {
+      "key": "zendesk_chat_license_key",
+      "value": "4lTKqfhCwcTUuLwuW2L2Qb6dBLpJdnX9"
+    },
+    {
+      "key": "zendesk_config",
+      "value": "{\"zendesk_url\": \"https://example2.zendesk.com\",\"zendesk_app_id\": \"d025bcc8410b6ee1c557832707bb72ab24cb7ca3216d24e1\",\"zendesk_client_id\": \"mobile_sdk_client_68a5ea80df115ad614f3\"}"
+    },
+    {
+      "key": "attestation_available",
+      "value": ""
+    },
+    {
+      "key": "promotion_enabled",
+      "value": false
+    },
+    {
+      "key": "cashier_prefetch_enabled",
+      "value": false
+    },
+    {
+      "key": "welcome_stories_enabled",
+      "value": true
+    },
+    {
+      "key": "sign_up_deposit_offer_enabled",
+      "value": false
+    },
+    {
+      "key": "trial_demo_enabled",
+      "value": false
+    },
+    {
+      "key": "exponea_extra_events_enabled",
+      "value": false
+    },
+    {
+      "key": "standard_app_link",
+      "value": ""
+    },
+    {
+      "key": "vip_app_link",
+      "value": ""
+    },
+    {
+      "key": "bonuses_deposit_banner_enabled",
+      "value": false
+    },
+    {
+      "key": "low_balance_deposit_proposal_enabled",
+      "value": false
+    },
+    {
+      "key": "payments_restrictions_config",
+      "value": ""
+    },
+    {
+      "key": "ftt_restrictions_config",
+      "value": "{\"user_status\":[\"all\"],\"traffic_type\":[\"all\"]}"
+    },
+    {
+      "key": "native_cashier_availability_config",
+      "value": "{\"payment_countries\":[\"IN\",\"ID\",\"TR\",\"BR\",\"UA\"], \"excluded_methods_by_country\":{}}"
+    },
+    {
+      "key": "maintenance_screen",
+      "value": "{\"enabled\": false}"
+    },
+    {
+      "key": "trade_signals_enabled",
+      "value": false
+    },
+    {
+      "key": "reviewer_mode_enabled",
+      "value": false
+    },
+    {
+      "key": "invite_friend_enabled",
+      "value": false
+    },
+    {
+      "key": "invite_friend_rules_path",
+      "value": ""
+    },
+    {
+      "key": "invite_friend_shared_link_path",
+      "value": "/auth"
+    },
+    {
+      "key": "brand_star_config",
+      "value": ""
+    },
+    {
+      "key": "stories_enabled",
+      "value": true
+    }
+  ]
+}

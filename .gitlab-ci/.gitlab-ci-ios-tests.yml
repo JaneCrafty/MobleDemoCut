@@ -1,0 +1,13 @@
+RunTestsIos:
+  extends:
+    - .setup-for-ios-tests
+    - .rules-ios-build-and-tests
+  variables:
+    TEST_SUITE: "SmokeIosBOandCFDSuite"
+    THREAD_COUNT: "1"
+    ALLURE_LAUNCH_TAGS: "smoke, $platform"
+  needs:
+    - job: BuildIosApp
+      artifacts: true
+  dependencies:
+    - BuildIosApp

@@ -1,0 +1,4 @@
+BuildAndroidApp:
+  extends:
+    - .setup-for-android-build
+    - .rules-android-build

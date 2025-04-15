@@ -1,0 +1,221 @@
+{
+    "version": 0,
+    "config": [
+        {
+            "key": "tournaments_enabled",
+            "value": true
+        },
+        {
+            "key": "api_host",
+            "value": "example.com"
+        },
+        {
+            "key": "web_rotator_host",
+            "value": "example-r.com"
+        },
+        {
+            "key": "education_host",
+            "value": "tradingstudy.net"
+        },
+        {
+            "key": "payments_disabled",
+            "value": false
+        },
+        {
+            "key": "vertical_cashier_enabled",
+            "value": true
+        },
+        {
+            "key": "ab_policies_agreed_enabled",
+            "value": false
+        },
+        {
+            "key": "help_center_config",
+            "value": "\"{\"en\": \"https://example2.zendesk.com/hc/en-us\",\"id\": \"https://example2.zendesk.com/hc/id\",\"es\": \"https://example2.zendesk.com/hc/es\",\"th\": \"https://example2.zendesk.com/hc/en-us\",\"vn\": \"https://example2.zendesk.com/hc/vi\",\"cn\": \"https://example2.zendesk.com/hc/en-us\",\"tr\": \"https://example2.zendesk.com/hc/tr\",\"in\": \"https://example2.zendesk.com/hc/hi-in\",\"ua\": \"https://example2.zendesk.com/hc/uk\",\"kz\": \"https://example2.zendesk.com/hc/en-us\",\"br\": \"https://example2.zendesk.com/hc/pt-br\",\"bn\": \"https://example2.zendesk.com/hc/en-us\"}\""
+        },
+        {
+            "key": "zendesk_chat_license_key",
+            "value": "4lTKqfhCwcTUuLwuW2L2Qb6dBLpJdnX9"
+        },
+        {
+            "key": "zendesk_url",
+            "value": "https://example2.zendesk.com"
+        },
+        {
+            "key": "verification_support_email",
+            "value": "verification@example.com"
+        },
+        {
+            "key": "whats_new_enabled",
+            "value": true
+        },
+        {
+            "key": "available_social_networks",
+            "value": ""
+        },
+        {
+            "key": "push_offering_screens",
+            "value": ""
+        },
+        {
+            "key": "push_settings_screens",
+            "value": "\"{\"welcome\":false,\"settings\":false}\""
+        },
+        {
+            "key": "organic_default_trading_mechanic",
+            "value": "cfd"
+        },
+        {
+            "key": "non_organic_default_trading_mechanic",
+            "value": "std"
+        },
+        {
+            "key": "std_enabled",
+            "value": true
+        },
+        {
+            "key": "cfd_enabled",
+            "value": true
+        },
+        {
+            "key": "real_cfd_enabled",
+            "value": false
+        },
+        {
+            "key": "bruteforce_shield_enabled",
+            "value": false
+        },
+        {
+            "key": "chatbot_enabled",
+            "value": false
+        },
+        {
+            "key": "chat_enabled",
+            "value": true
+        },
+        {
+            "key": "core_reload_delay_ms",
+            "value": 5000
+        },
+        {
+            "key": "ab_platform_enabled",
+            "value": false
+        },
+        {
+            "key": "highvip_enabled",
+            "value": false
+        },
+        {
+            "key": "clickstream_events_enabled",
+            "value": false
+        },
+        {
+            "key": "sci_chart_license_key",
+            "value": "4P0XLhrmPOxz4IxwNFM3FnPWCZHu1oV89qlU8C9NAX3z7Sz0PAG/K23urpgWsil0OtyzGcRC5RLITWliTfGG9xRzM/aFk/6tZJYoiwrvnPj8T9CEI//WZMGS1+cLNF2Q8zwZH0TvOcqTT6yYvT/CQ+MTZMT7N7Ykc+cQpf1VgwnyDpTiCSMucVoguJeSMWHMbbEEwAQvCe6OGmntS9Yyl4Nx6x0eo1guthLo5W+n6aHvb0hq7BrErMS2q06EE2y7x8px6x1COo0KFleIzb+YFzmtjBsnp87g72xHnmOpscTKEHWC9GyLgFrcHMOoewwHvdqlMXdpftK6KGnXO0SHvXmlDYJ8gq+zBGr4Kt41XyaLaiGJWCnPCFq+r2CEqxx+aZWhMYk0qHsB49seAW0n/gTR75SRunqKS3Y0RKRgC9ohfQ/JeHVOWsrzqd7hm48XdRwxGQk+M4dPQHWJb3G9eig8Q0XoGw2W2A=="
+        },
+        {
+            "key": "blog_host",
+            "value": "example.com"
+        },
+        {
+            "key": "passport_signin_enabled",
+            "value": true
+        },
+        {
+            "key": "wtc_23_enabled",
+            "value": false
+        },
+        {
+            "key": "wtc_23_landing_path",
+            "value": "/promo/wtc"
+        },
+        {
+            "key": "wtc_23_prize_landing_path",
+            "value": "/promo/wtc_raffle"
+        },
+        {
+            "key": "prestige_club_landing_path",
+            "value": "/promo/l79"
+        },
+        {
+            "key": "telegram_channel_config",
+            "value": ""
+        },
+        {
+            "key": "ftt_crypto_enabled",
+            "value": true
+        },
+        {
+            "key": "cfd_crypto_enabled",
+            "value": true
+        },
+        {
+            "key": "ftt_currency_enabled",
+            "value": true
+        },
+        {
+            "key": "cfd_currency_enabled",
+            "value": true
+        },
+        {
+            "key": "promotion_enabled",
+            "value": false
+        },
+        {
+            "key": "passport_sign_up_enabled",
+            "value": true
+        },
+        {
+            "key": "extended_welcome_stories_enabled",
+            "value": false
+        },
+        {
+            "key": "sign_up_deposit_offer_enabled",
+            "value": false
+        },
+        {
+            "key": "welcome_stories_enabled",
+            "value": true
+        },
+        {
+            "key": "available_social_networks",
+            "value": "\"[\"apple\",\"google\",\"line\"]\""
+        },
+        {
+            "key": "two_factor_auth_disabled",
+            "value": false
+        },
+        {
+            "key": "blitz_enabled",
+            "value": true
+        },
+        {
+            "key": "exponea_extra_events_enabled",
+            "value": false
+        },
+        {
+            "key": "api_host_config",
+            "value": "\"{\"host\":\"binmobileapps.com\",\"certificate\":\"\"}\""
+        },
+        {
+            "key": "maintenance_screen",
+            "value": "\"{\"enabled\": false, \"support_email\": \"support@example.com\"}\""
+        },
+        {
+            "key": "trial_demo_enabled",
+            "value": false
+        },
+        {
+            "key": "ftt_restrictions_config",
+            "value": "\"{\"user_status\": [], \"traffic_type\": []}\""
+        },
+        {
+            "key": "payments_restrictions_config",
+            "value": "\"{\"user_status\": [], \"traffic_type\": []}\""
+        },
+        {
+            "key": "trade_signals_enabled",
+            "value": false
+        }
+    ]
+}

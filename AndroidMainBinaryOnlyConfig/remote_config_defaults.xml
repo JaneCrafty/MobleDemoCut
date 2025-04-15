@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- START xml_defaults -->
+<defaultsMap>
+	<entry>
+		<key>ab_dark_signup_enabled_v2</key>
+		<value>false</value>
+	</entry>
+	<entry>
+		<key>tournaments_enabled</key>
+		<value>true</value>
+	</entry>
+	<entry>
+		<key>api_host</key>
+		<value>binmortech.com</value>
+	</entry>
+	<entry>
+		<key>blocked_registration_enabled</key>
+		<value>false</value>
+	</entry>
+	<entry>
+		<key>payments_disabled</key>
+		<value>false</value>
+	</entry>
+	<entry>
+		<key>vertical_cashier_enabled</key>
+		<value>true</value>
+	</entry>
+	<entry>
+		<key>ab_policies_agreed_enabled</key>
+		<value>false</value>
+	</entry>
+	<entry>
+		<key>help_center_config</key>
+		<value />
+	</entry>
+	<entry>
+		<key>ab_brazilian_alert_enabled</key>
+		<value>false</value>
+	</entry>
+	<entry>
+		<key>whats_new_enabled</key>
+		<value>false</value>
+	</entry>
+	<entry>
+		<key>app_rate_settings</key>
+		<value />
+	</entry>
+	<entry>
+		<key>push_settings_screens</key>
+		<value>{"welcome": false,"settings": false}</value>
+	</entry>
+	<entry>
+		<key>ab_demo_deals_limit</key>
+		<value>0</value>
+	</entry>
+	<entry>
+		<key>available_humanteq_countries</key>
+		<value>["UA"]</value>
+	</entry>
+	<entry>
+		<key>available_social_networks</key>
+		<value>["facebook"]</value>
+	</entry>
+	<entry>
+		<key>push_offering_screens</key>
+		<value>{"tournaments": false,"finance" :false,"deals": false,"promo_news": false}</value>
+	</entry>
+	<entry>
+		<key>deal_sum_card_enabled</key>
+		<value>true</value>
+	</entry>
+	<entry>
+		<key>organic_default_trading_mechanic</key>
+		<value>std</value>
+	</entry>
+	<entry>
+		<key>non_organic_default_trading_mechanic</key>
+		<value>cfd</value>
+	</entry>
+	<entry>
+		<key>std_enabled</key>
+		<value>true</value>
+	</entry>
+	<entry>
+		<key>cfd_enabled</key>
+		<value>false</value>
+	</entry>
+</defaultsMap>

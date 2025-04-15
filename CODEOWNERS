@@ -1,0 +1,27 @@
+# Code Owners for a file
+src/main/java/com/example/JMobile/framework/POM/MobileElementActions.java @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/test/java/com/example/JMobile/testing/ListenerHelper.java @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/test/java/com/example/JMobile/testing/TestWatcherRules.java @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/test/java/com/example/JMobile/testing/Watcher.java @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+.gitlab-ci.yml @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+CODEOWNERS @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+pom.xml @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+remote_config_defaults.xml @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+remote_config_ios.json @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+
+# Code Owners for a directory
+.gitlab-ci/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+.m2/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+AndroidFeatureFlagCarolConfig/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+AndroidMainBinaryOnlyConfig/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+AndroidMainConfig/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+AndroidSystemSettingsConfig/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+scripts/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/main/java/com/example/JMobile/framework/driver/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/main/java/com/example/JMobile/framework/environment/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/main/java/com/example/JMobile/framework/Helpers/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/main/java/com/example/JMobile/framework/JiraSync/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/main/java/com/example/JMobile/framework/SlackSync/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/main/java/com/example/JMobile/framework/SumSubSync/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/main/resources/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova
+src/test/resources/ @alena.lebedkova @anton.rumyantsev @evgeniya.basova

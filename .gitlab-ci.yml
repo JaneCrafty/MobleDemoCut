@@ -1,0 +1,21 @@
+stages:
+  - AppBuild
+  - RunTests
+
+variables:
+  stackName: "autotest"
+  Java11: "/usr/lib/jvm/java-1.11.0-openjdk-amd64"
+  Java17: "/usr/lib/jvm/java-1.17.0-openjdk-amd64"
+  allureReportLink: "https://testops.example.com/project/2/launches?search="
+  ALLURE_LAUNCH_NAME: "${CI_PROJECT_PATH_SLUG}/${CI_JOB_ID}"
+
+include:
+  - local: '/.gitlab-ci/.setup-builds.yml'
+  - local: '/.gitlab-ci/.setup-tests.yml'
+  - local: '/.gitlab-ci/.rules.yml'
+  - local: '/.gitlab-ci/.gitlab-ci-build-android.yml'
+  - local: '/.gitlab-ci/.gitlab-ci-cashier-tests.yml'
+  - local: '/.gitlab-ci/.gitlab-ci-android-tests.yml'
+  - local: '/.gitlab-ci/.gitlab-ci-build-ios.yml'
+  - local: '/.gitlab-ci/.gitlab-ci-ios-tests.yml'
+  - local: '/.gitlab-ci/.gitlab-ci-reject-withdrawals.yml'

@@ -1,0 +1,15 @@
+СashierChangesAndroid:
+  stage: RunTests
+  extends:
+    - .setup-for-cashier-android-tests
+    - .rules-cashier
+  variables:
+    TEST_SUITE: "CashierChangesSmokeSuiteAnd"
+    THREAD_COUNT: "8"
+    ALLURE_LAUNCH_TAGS: "cashier"
+    ALLURE_TESTPLAN_PATH: "/home/gitlab-runner/Allure/testplan.json"
+  needs:
+    - job: BuildAndroidApp
+      artifacts: true
+  dependencies:
+    - BuildAndroidApp

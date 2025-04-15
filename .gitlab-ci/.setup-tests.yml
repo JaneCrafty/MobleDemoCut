@@ -1,0 +1,87 @@
+.general-setup-for-android-tests: &general-setup-for-android-tests
+  stage: RunTests
+  variables:
+    PLATFORM_NAME: "android"
+    APPIUM_PORT: "4723"
+    MVN_OPTS: "-s .m2/settings.xml"
+    ALLURECTL_PATH: "/home/gitlab-runner/Allure/allurectl"
+    ALLURE_TESTPLAN_PATH: "/home/gitlab-runner/Allure/testplan.json"
+  after_script:
+    - echo Allure report upload
+    - encode=`echo '[{"id":"name","type":"string","value":"'${CI_JOB_ID}'"}]' | base64`
+    - echo $allureReportLink$encode
+    - rm -f ${ALLURE_TESTPLAN_PATH}
+    - ./scripts/stopAndroidEmulator.sh
+  artifacts:
+    name: "TestReportAndroid"
+    paths:
+      - target/allure-results/
+      - target/android/allure-report/
+      - appium-${APPIUM_PORT}.log
+      - grid.log
+      - logs/*.log
+    expire_in: 4 days
+    when: always
+  allow_failure: true
+  tags:
+    - qa-shell-nl-qaq
+
+.setup-for-android-tests:
+  <<: *general-setup-for-android-tests
+  script: &setup-for-android-tests
+    - ./scripts/startAndroidEmulator.sh
+    - export configFile=androidci
+    - chmod +x ./scripts/mvn-launcher.sh
+    - ./scripts/mvn-launcher.sh
+
+.setup-for-ios-tests:
+  stage: RunTests
+  variables:
+    PLATFORM_NAME: "ios"
+    APPIUM_PORT: "4725"
+    SIMULATOR_UUID: "1FCC2A96-FB84-4C4B-8713-04DE9B5D30BC"
+    MVN_OPTS: "-s .m2/settings.xml"
+    ALLURECTL_PATH: "/Users/gitlab-runner/Allure/allurectl"
+    ALLURE_TESTPLAN_PATH: "/Users/gitlab-runner/Allure/testplan.json"
+    JAVA_HOME_8: "/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home"
+  script:
+    - export JAVA_HOME=$JAVA_HOME_8
+    - export JAVA_BIN="$JAVA_HOME/bin"
+    - chmod +x ./scripts/startIosSimulator.sh
+    - ./scripts/startIosSimulator.sh
+    - export configFile=iosci
+    - chmod +x ./scripts/mvn-launcher.sh
+    - ./scripts/mvn-launcher.sh
+  after_script:
+    - echo Allure report upload
+    - encode=`echo '[{"id":"name","type":"string","value":"'${CI_JOB_ID}'"}]' | base64`
+    - echo $allureReportLink$encode
+    - chmod +x ./scripts/stopIosSimulator.sh
+    - ./scripts/stopIosSimulator.sh
+    - rm -f ${ALLURE_TESTPLAN_PATH}
+  artifacts:
+    name: "TestReportIOS"
+    paths:
+      - target/allure-results/
+      - target/ios/allure-report/
+      - appium-${APPIUM_PORT}.log
+    expire_in: 4 days
+    when: always
+  allow_failure: true
+  tags:
+    - qa-shell-test-ios-macmini1
+
+.setup-for-cashier-android-tests:
+  <<: *general-setup-for-android-tests
+  script: &setup-for-cashier-android-tests
+    - curl -o ./chr.zip https://chromedriver.storage.googleapis.com/83.0.4103.14/chromedriver_linux64.zip
+    - unzip chr.zip
+    - *setup-for-android-tests
+
+.setup-for-android-tests-default-suite:
+  extends:
+    - .setup-for-android-tests
+  variables:
+    TEST_SUITE: "SmokeAndroidBOandCFDSuite"
+    THREAD_COUNT: "8"
+    ALLURE_LAUNCH_TAGS: "smoke, $platform"

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>JMobile</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://packages.atlassian.com/maven/repository/public</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <junit-jupiter.version>5.9.1</junit-jupiter.version>
+        <junit-platform-suite-engine.version>1.9.1</junit-platform-suite-engine.version>
+
+        <appium-client.version>7.6.0</appium-client.version>
+        <selenium.version>3.141.59</selenium.version>
+        <assertj.version>3.11.1</assertj.version>
+        <json-simple.version>1.1.1</json-simple.version>
+        <aspectj.version>1.9.4</aspectj.version>
+
+        <maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-compiler.source.version>8</maven-compiler.source.version>
+        <maven-compiler.target.version>8</maven-compiler.target.version>
+        <maven-site-plugin.version>4.0.0-M3</maven-site-plugin.version>
+
+        <allure-rest-assured.version>2.19.0</allure-rest-assured.version>
+        <allure-maven.version>2.11.2</allure-maven.version>
+        <allure-maven-report.version>2.13.0</allure-maven-report.version>
+        <allure-junit5.version>2.19.0</allure-junit5.version>
+        <apache-commons-csv.version>2.19.0</apache-commons-csv.version>
+        <allure-commandline.version>2.19.0</allure-commandline.version>
+        <slackapi.version>1.25.1</slackapi.version>
+
+        <logging.log4j-core.version>2.19.0</logging.log4j-core.version>
+
+        <jira-rest-java-client-core.version>5.1.6</jira-rest-java-client-core.version>
+        <fugue.version>4.7.2</fugue.version>
+        <runSuite></runSuite>
+
+        <aspectj.version>1.9.21.1</aspectj.version>
+        <java.agent.line>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+        </java.agent.line>
+
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven-compiler.source.version}</source>
+                    <target>${maven-compiler.target.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>${runSuite}</include>
+                    </includes>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <rerunFailingTestsCount>0</rerunFailingTestsCount>
+                    <argLine>${java.agent.line}</argLine>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit5.AllureJunit5</value>
+                        </property>
+                    </properties>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
+                        </property>
+                    </systemProperties>
+                    <systemPropertyVariables>
+                        <configFile>androidci</configFile>
+                        <autotests_job_url></autotests_job_url>
+                        <apkPath></apkPath>
+                        <appiumPort>4723</appiumPort>
+                        <appBranch></appBranch>
+                        <appBranchName>https://autotest.example.com</appBranchName>
+                        <jiraPassword></jiraPassword>
+                        <slack_token></slack_token>
+                        <gitlab_user_email></gitlab_user_email>
+                        <trigger_user></trigger_user>
+                        <platform_name></platform_name>
+                        <callerJobId></callerJobId>
+                        <cashierChanges></cashierChanges>
+                        <sumsub_app_token></sumsub_app_token>
+                        <sumsub_secret_key></sumsub_secret_key>
+                        <sumsub_test_base_url></sumsub_test_base_url>
+                        <startFromAllure></startFromAllure>
+                    </systemPropertyVariables>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.qameta.allure</groupId>
+                        <artifactId>allure-junit5</artifactId>
+                        <version>${allure-junit5.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure-maven-report.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <!--TEST-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit-platform-suite-engine.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-engine -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-engine</artifactId>
+            <version>${junit-platform-suite-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium-client.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${logging.log4j-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>${json-simple.version}</version>
+        </dependency>
+
+        <!--ALLURE-->
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-commandline -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-commandline</artifactId>
+            <version>${allure-commandline.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure-commandline.version}</version>
+        </dependency>
+
+        <!--SLACK LIBRARY-->
+        <dependency>
+            <groupId>com.slack.api</groupId>
+            <artifactId>slack-api-client</artifactId>
+            <version>${slackapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.stephenc.jcip</groupId>
+            <artifactId>jcip-annotations</artifactId>
+            <version>1.0-1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Jira libraries -->
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-rest-java-client-core</artifactId>
+            <version>${jira-rest-java-client-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.atlassian.fugue</groupId>
+            <artifactId>fugue</artifactId>
+            <version>${fugue.version}</version>
+        </dependency>
+    </dependencies>
+</project>

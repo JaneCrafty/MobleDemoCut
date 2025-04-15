@@ -1,0 +1,133 @@
+RunTestsAndroidBrokerBeta:
+  extends:
+    - .setup-for-android-tests
+    - .rules-android-tests
+  variables:
+    TEST_SUITE: "SmokeAndroidBOandCFDSuite"
+    THREAD_COUNT: "8"
+    ALLURE_LAUNCH_TAGS: "smoke, $platform"
+  needs:
+    - job: BuildAndroidApp
+      artifacts: true
+  dependencies:
+    - BuildAndroidApp
+
+# job for testing, may be obsolete
+RunTestsAndroidSample:
+  extends:
+    - .setup-for-android-tests-default-suite
+  needs:
+    - project: mobile/android/example
+      job: Build aws cloud Sample
+      ref: $appBranch
+      artifacts: true
+  rules:
+    - if: '$platform == "AND" && $appName == "sample"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "AND" && $appName == "sample"'
+    - !reference [.rules-android-tests-prod, rules]
+
+RunTestsAndroidStockity:
+  extends:
+    - .setup-for-android-tests-default-suite
+  needs:
+    - project: mobile/android/example
+      job: Build aws cloud stockity
+      ref: $appBranch
+      artifacts: true
+  rules:
+    - if: '$platform == "AND" && $appName == "stockity"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "AND" && $appName == "stockity"'
+    - !reference [.rules-android-tests-prod, rules]
+
+RunTestsAndroidXiaomiMarketlyAssistant:
+  extends:
+    - .setup-for-android-tests-default-suite
+  needs:
+    - project: mobile/android/example
+      job: Build aws cloud Xiaomi Marketly Assistant
+      ref: $appBranch
+      artifacts: true
+  rules:
+    - if: '$platform == "AND" && $appName == "xiaomi_marketly_assistant"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "AND" && $appName == "xiaomi_marketly_assistant"'
+    - !reference [.rules-android-tests-prod, rules]
+
+# probably vipexampleBroker but for prod
+RunTestsAndroidVipMarketlyAssistant:
+  extends:
+    - .setup-for-android-tests-default-suite
+  needs:
+    - project: mobile/android/example
+      job: Build aws cloud Vip Marketly Assistant
+      ref: $appBranch
+      artifacts: true
+  rules:
+    - if: '$platform == "AND" && $appName == "vip_marketly_assistant"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "AND" && $appName == "vip_marketly_assistant"'
+    - !reference [.rules-android-tests-prod, rules]
+
+RunTestsAndroidMarketlyTraderMode:
+  variables:
+    TEST_SUITE: "SmokeAndroidMarketlyTraderModeSuite"
+    ALLURE_LAUNCH_TAGS: "Marketly, TraderMode"
+    USE_PROXY_TRADER: "true"
+  extends:
+    - .setup-for-android-tests-default-suite
+  script:
+    - ./scripts/apkExtractor.sh
+    - ./scripts/startAndroidEmulator.sh
+    - export configFile=androidMarketlyTraderMode
+    - chmod +x ./scripts/mvn-launcher.sh
+    - ./scripts/mvn-launcher.sh
+  needs:
+    - project: mobile/android/example
+      job: Build aws cloud Marketly Assistant
+      ref: $appBranch
+      artifacts: true
+  rules:
+    - if: '$platform == "AND" && $appName == "marketly_assistant"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "AND" && $appName == "marketly_assistant"'
+    - !reference [.rules-android-tests-prod, rules]
+
+RunTestsAndroidMarketlyModeratorMode:
+  variables:
+    TEST_SUITE: "SmokeAndroidMarketlyModeratorModeSuite"
+    ALLURE_LAUNCH_TAGS: "Marketly, ModeratorMode"
+    USE_PROXY_MODERATOR: "true"
+  extends:
+    - .setup-for-android-tests-default-suite
+  script:
+    - ./scripts/apkExtractor.sh
+    - ./scripts/startAndroidEmulator.sh
+    - export configFile=androidMarketlyModeratorMode
+    - chmod +x ./scripts/mvn-launcher.sh
+    - ./scripts/mvn-launcher.sh
+  needs:
+    - project: mobile/android/example
+      job: Build aws cloud Marketly Assistant
+      ref: $appBranch
+      artifacts: true
+  rules:
+    - if: '$platform == "AND" && $appName == "marketly_assistant"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "AND" && $appName == "marketly_assistant"'
+    - !reference [.rules-android-tests-prod, rules]
+
+
+RunTestsAndroidVipBrokerBeta:
+  extends:
+    - .setup-for-android-tests
+    - .rules-android-tests-vip-broker-beta
+  variables:
+    TEST_SUITE: "SmokeAndroidVipBrokerBetaSuite"
+    THREAD_COUNT: "8"
+    ALLURE_LAUNCH_TAGS: "$platform, vipBeta"
+  script:
+    - ./scripts/startAndroidEmulator.sh
+    - export configFile=androidvipci
+    - chmod +x ./scripts/mvn-launcher.sh
+    - ./scripts/mvn-launcher.sh
+  needs:
+    - job: BuildAndroidApp
+      artifacts: true
+  dependencies:
+    - BuildAndroidApp

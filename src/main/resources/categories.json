@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Устаревшие тесты (селекторы)",
+    "messageRegex": ".*Unable to locate element.*",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Неизвестная проблема",
+    "matchedStatuses": ["broken", "failed"],
+    "messageRegex": ".*что-то пошло не так.*"
+  },
+  {
+    "name": "Нет данных",
+    "matchedStatuses": ["broken"],
+    "traceRegex": ".*NullPointerException.*"
+  },
+  {
+    "name": "Product defects",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Test defects",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Тест пропущен",
+    "matchedStatuses": ["skipped"]
+  }
+
+]

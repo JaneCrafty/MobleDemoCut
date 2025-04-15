@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.example.JMobile.framework.environment" status="WARN">
+    <Appenders>
+        <CustomAppender name="customAppender">
+            <PatternLayout pattern="%d{ABSOLUTE}{Europe/Moscow} - %m%n" />
+        </CustomAppender>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="customAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

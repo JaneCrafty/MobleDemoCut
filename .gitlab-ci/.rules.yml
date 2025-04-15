@@ -1,0 +1,64 @@
+.rules-general:
+  rules: &rules-general
+    - if: '$mergeRequestRunNeeded == "true"'
+    - if: '$startFromAllure == "true"'
+
+.rules-android-general:
+  rules: &rules-android-general
+    - if: '$platform == "AND" && ($appName == "rc" || $appName == null)'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "AND" && ($appName == "rc" || $appName == null)'
+
+.rules-ios-general:
+  rules: &rules-ios-general
+    - if: '$platform == "IOS"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $platform == "IOS"'
+    - if: '$CI_PIPELINE_SOURCE == "api" && $platform == "IOS"'
+    - when: never
+
+.rules-cashier:
+  rules: &rules-cashier
+    - if: '$cashierChanges == "true"'
+    - when: never
+
+.rules-android-tests:
+  rules:
+    - *rules-general
+    - *rules-android-general
+    - when: never
+
+.rules-android-tests-vip-broker-beta:
+  rules: &rules-android-tests-vip-broker-beta
+    - if: '$platform == "AND" && $appName == "vip_broker_beta"'
+
+.rules-android-tests-prod:
+  rules:
+    - *rules-general
+    
+.rules-android-marketly:
+  rules:
+    - if: '$storeApp == "marketly"'
+    - when: never
+
+.rules-android-build:
+  rules:
+    - *rules-general
+    - *rules-android-general
+    - *rules-android-tests-vip-broker-beta
+    - *rules-cashier
+
+.rules-ios-build-and-tests:
+  rules:
+    - *rules-general
+    - *rules-ios-general
+
+.rules-reject-withdrawals:
+  rules:
+    - if: '$rejectWithdrawals == "true"'
+      when: always
+    - when: never
+
+.rules-test-prod-proxy:
+  rules:
+    - if: '$testProdProxy == "true"'
+      when: always
+    - when: never

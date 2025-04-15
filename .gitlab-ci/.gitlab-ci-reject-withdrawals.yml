@@ -1,0 +1,9 @@
+RejectWithdrawals:
+  stage: RunTests
+  extends:
+    - .rules-reject-withdrawals
+  script:
+    - chmod +x ./scripts/rejectNewWithdrawals.sh
+    - ./scripts/rejectNewWithdrawals.sh
+  tags:
+    - qa-shell-nl-qaq
